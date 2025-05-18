@@ -1,0 +1,54 @@
+
+Kaggle MCP Server - Usage Guide
+===============================
+
+Setup
+-----
+1. Install requirements:
+    pip install fastapi uvicorn kaggle
+
+2. Set your Kaggle API credentials:
+    export KAGGLE_USERNAME=your_username
+    export KAGGLE_KEY=your_api_key
+
+3. Run the server:
+    uvicorn kaggle_mcp_server:app --reload
+
+
+Endpoints
+---------
+
+1. Stream Kaggle Dataset Metadata (SSE)
+---------------------------------------
+GET /stream
+
+Query Parameters:
+- search:      str  (e.g., "climate", "earthquake")
+- page:        int  (default=1)
+- page_size:   int  (default=5, max=100)
+
+Example:
+http://localhost:8000/stream?search=climate&page=1&page_size=5
+
+
+2. Download a Kaggle Dataset
+----------------------------
+GET /download
+
+Query Parameters:
+- dataset:     str  (required, e.g., "zynicide/wine-reviews")
+
+Example:
+http://localhost:8000/download?dataset=zynicide/wine-reviews
+
+Output:
+- Extracted dataset in: downloads/zynicide_wine-reviews/
+- ZIP archive (if available): downloads/zynicide_wine-reviews.zip
+
+
+Notes
+-----
+- SSE stream returns one dataset JSON object every ~0.5s.
+- You can modify download folder or enable automatic cleanup as needed.
+- SSE clients should reconnect using retry logic if disconnected.
+
