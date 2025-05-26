@@ -18,7 +18,7 @@ def run():
     Run the crew.
     """
     inputs = {
-        'topic': 'The growth of AI in India and its impact on the stock market in 2024-present',
+        'topic': 'The growth of solar energy production in India and its impact on the economy in 2020-2024',
         'current_year': str(datetime.now().year)
     }
     
@@ -33,7 +33,7 @@ def train():
     Train the crew for a given number of iterations.
     """
     inputs = {
-        "topic": 'The growth of AI in India and its impact on the stock market in 2024-present',
+        "topic": 'The growth of solar energy production in India and its impact on the economy in 2020-2024',
         'current_year': str(datetime.now().year)
     }
     try:
@@ -57,7 +57,7 @@ def test():
     Test the crew execution and returns the results.
     """
     inputs = {
-        "topic": 'The growth of AI in India and its impact on the stock market in 2024-present',
+        "topic": 'The growth of solar energy production in India and its impact on the economy in 2020-2024',
         "current_year": str(datetime.now().year)
     }
     
